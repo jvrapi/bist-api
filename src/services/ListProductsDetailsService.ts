@@ -4,6 +4,10 @@ import { ListsProductsRepositories } from '../repositories/ListProductRepositori
 class ListProductsDetailsService {
   async execute(listId: string) {
     const repository = getCustomRepository(ListsProductsRepositories)
+
+    if (!listId) {
+      throw new Error('Missing informations')
+    }
     const listProduct = await repository.find({
       where: { listId },
       relations: ['product']

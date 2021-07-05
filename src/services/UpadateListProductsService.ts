@@ -12,7 +12,16 @@ type UpdateData = {
 class UpdateListProductsService {
   async execute(listProducts: UpdateData) {
     const repository = getCustomRepository(ListsProductsRepositories)
+
+    if (!listProducts.id || !listProducts.listId || !listProducts.productId) {
+      throw new Error('Missing informations')
+    }
+
+    if (listProducts.price === null) {
+      listProducts.price = 0
+    }
     const updatedListProducts = await repository.save(listProducts)
+
     return updatedListProducts
   }
 }
