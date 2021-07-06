@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: ${BD_USERNAME}
+      POSTGRES_PASSWORD: ${BD_PASSWORD}
+      POSTGRES_DB: ${BD_DATABASE}
+      
+    ports:
+      - ${BD_PORT}:${BD_PORT}
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data:z
+  app:
+    container_name: bist-api
+    restart: always
+    build: .
+    ports: 
+      - ${PORT}:${PORT}
+    depends_on:
+      - db

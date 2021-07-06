@@ -1,3 +1,5 @@
+
+const rootDir = process.env.NODE_ENV === 'development' ? 'src' : 'dist';
 module.exports = {
   type: process.env.BD_TYPE,
   host: process.env.BD_HOST,
@@ -6,10 +8,10 @@ module.exports = {
   password: process.env.BD_PASSWORD,
   port: process.env.BD_PORT,
 
-  entities: ['src/entities/*.{js,ts}'],
-  migrations: ['src/database/migrations/*.{js,ts}'],
+  entities: [rootDir + '/entities/*.{js,ts}'],
+  migrations: [rootDir + '/database/migrations/*.{js,ts}'],
   cli: {
-    migrationsDir: 'src/database/migrations',
-    entitiesDir: 'src/entities'
-  }
+    migrationsDir: rootDir + '/database/migrations',
+    entitiesDir: rootDir + '/entities',
+  },
 }
