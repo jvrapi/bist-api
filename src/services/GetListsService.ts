@@ -1,8 +1,8 @@
 import { getCustomRepository } from 'typeorm'
 import { ListsRepositories } from '../repositories/ListRepositories'
-import { ListListsView } from '../views/ListListsView'
+import { ListListsView } from '../views/GetListsView'
 
-class ListListsService {
+class GetListsService {
   async execute() {
     const repository = getCustomRepository(ListsRepositories)
     const view = new ListListsView()
@@ -14,4 +14,4 @@ class ListListsService {
   }
 }
 
-export { ListListsService }
+export { GetListsService }

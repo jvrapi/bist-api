@@ -5,7 +5,7 @@ class ListListsView {
   format(lists: List[]) {
     return lists.map(list => ({
       id: list.id,
-      createAt: list.createdAt,
+      createdAt: list.createdAt,
       total: calculateTotal(list.listsProducts)
     }))
   }

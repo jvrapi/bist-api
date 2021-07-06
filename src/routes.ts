@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { CreateListController } from './controllers/CreateListController'
-import { ListListsController } from './controllers/ListListsController'
+import { GetListsController } from './controllers/GetListsController'
 import { CreateListProductsController } from './controllers/CreateListProductsController'
 import { UpdateListProductsController } from './controllers/UpdateListProductsController'
 import { ListProductDetailsController } from './controllers/ListProductDetailsController'
@@ -8,14 +8,14 @@ import { ListProductByNameController } from './controllers/ListProductByNameCont
 
 const routes = Router()
 
-const listListsController = new ListListsController()
+const getListsController = new GetListsController()
 const createListController = new CreateListController()
 const createListProductsController = new CreateListProductsController()
 const updateListProductsController = new UpdateListProductsController()
 const listProductDetailsController = new ListProductDetailsController()
 const listProductByNameController = new ListProductByNameController()
 
-routes.get('/list/', listListsController.handle)
+routes.get('/list/', getListsController.handle)
 routes.post('/list', createListController.handle)
 routes.post('/list-products', createListProductsController.handle)
 routes.put('/list-products', updateListProductsController.handle)

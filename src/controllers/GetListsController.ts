@@ -1,9 +1,9 @@
 import { Request, Response } from 'express'
-import { ListListsService } from '../services/ListListsService'
+import { GetListsService } from '../services/GetListsService'
 
-class ListListsController {
+class GetListsController {
   async handle(request: Request, response: Response) {
-    const service = new ListListsService()
+    const service = new GetListsService()
 
     const lists = await service.execute()
 
@@ -11,4 +11,4 @@ class ListListsController {
   }
 }
 
-export { ListListsController }
+export { GetListsController }
