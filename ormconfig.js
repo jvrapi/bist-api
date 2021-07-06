@@ -1,6 +1,4 @@
-
 const rootDir = process.env.NODE_ENV === 'development' ? 'src' : 'dist';
-console.log('Database url: ', process.env.DATABASE_URL)
 module.exports = {
   type: process.env.BD_TYPE,
   url: process.env.DATABASE_URL,

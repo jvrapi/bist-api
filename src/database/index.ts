@@ -1,6 +1,6 @@
 import { Connection, createConnection } from 'typeorm'
 import { Product } from '../entities/Product'
-import products from './data/products.json'
+import { products } from './data/products'
 
 interface JsonData {
   name: string
