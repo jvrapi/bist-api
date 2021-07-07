@@ -10,7 +10,8 @@ class ListProductByNameService {
     const product = await repository.find({
       where: {
         name: Like(`%${capitalize(name)}%`)
-      }
+      },
+      take: 3
     })
     return product
   }
