@@ -7,7 +7,10 @@ class GetListsService {
     const repository = getCustomRepository(ListsRepositories)
     const view = new ListListsView()
     const lists = await repository.find({
-      relations: ['listsProducts']
+      relations: ['listsProducts'],
+      order: {
+        createdAt: 'ASC'
+      }
     })
 
     return view.format(lists)

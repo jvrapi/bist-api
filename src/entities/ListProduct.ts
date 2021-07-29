@@ -1,4 +1,11 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn
+} from 'typeorm'
 import { v4 as uuid } from 'uuid'
 import { List } from './List'
 import { Product } from './Product'
@@ -27,6 +34,9 @@ class ListProduct {
   @ManyToOne(() => Product, product => product.listsProducts)
   @JoinColumn({ name: 'products_id' })
   product: Product
+
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date
 
   constructor() {
     if (!this.id) {

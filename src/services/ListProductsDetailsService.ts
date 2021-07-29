@@ -10,7 +10,10 @@ class ListProductsDetailsService {
     }
     const listProduct = await repository.find({
       where: { listId },
-      relations: ['product']
+      relations: ['product'],
+      order: {
+        createdAt: 'DESC'
+      }
     })
     return listProduct
   }
