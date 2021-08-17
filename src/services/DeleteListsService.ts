@@ -1,19 +1,16 @@
 import { getCustomRepository } from 'typeorm'
-import { ListsRepositories } from '../repositories/ListRepositories'
+import { ListsRepository } from '../repositories/ListsRepository'
 
 class DeleteListsService {
-  execute(lists: string[]) {
-    const repository = getCustomRepository(ListsRepositories)
+  async execute(listId: string) {
+    const repository = getCustomRepository(ListsRepository)
+    try {
+      await repository.delete(listId)
+    } catch (error) {
+      throw new Error('Error when try delete list: \n' + error)
+    }
 
-    lists.forEach(async (listId: string) => {
-      try {
-        await repository.delete(listId)
-      } catch (error) {
-        throw new Error('Error when try delete list')
-      }
-    })
-
-    return { message: 'All lists deleted' }
+    return { message: 'List deleted' }
   }
 }
 

@@ -1,9 +1,9 @@
 import { getCustomRepository } from 'typeorm'
-import { ListsProductsRepositories } from '../repositories/ListProductRepositories'
+import { ListsProductsRepository } from '../repositories/ListsProductsRepository'
 
 class ListProductsDetailsService {
   async execute(listId: string) {
-    const repository = getCustomRepository(ListsProductsRepositories)
+    const repository = getCustomRepository(ListsProductsRepository)
 
     if (!listId) {
       throw new Error('Missing informations')

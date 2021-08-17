@@ -3,9 +3,9 @@ import { DeleteListsService } from '../services/DeleteListsService'
 
 class DeleteListsController {
   async handle(request: Request, response: Response) {
-    const listsId: string[] = request.body
+    const { listId } = request.body
     const service = new DeleteListsService()
-    const deleted = await service.execute(listsId)
+    const deleted = await service.execute(listId)
     return response.json(deleted)
   }
 }
