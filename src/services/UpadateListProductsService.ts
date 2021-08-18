@@ -1,5 +1,5 @@
 import { getCustomRepository } from 'typeorm'
-import { ListsProductsRepositories } from '../repositories/ListProductRepositories'
+import { ListsProductsRepository } from '../repositories/ListsProductsRepository'
 
 type UpdateData = {
   id: string
@@ -11,7 +11,7 @@ type UpdateData = {
 
 class UpdateListProductsService {
   async execute(listProducts: UpdateData) {
-    const repository = getCustomRepository(ListsProductsRepositories)
+    const repository = getCustomRepository(ListsProductsRepository)
 
     if (!listProducts.id || !listProducts.listId || !listProducts.productId) {
       throw new Error('Missing informations')

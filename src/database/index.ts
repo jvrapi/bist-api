@@ -1,17 +1,16 @@
-import { Connection, createConnection } from 'typeorm'
+import { createConnection, getConnection } from 'typeorm'
 import { Product } from '../entities/Product'
 import { products } from './data/products'
-
 interface JsonData {
   name: string
 }
-
 async function connectToDatabase() {
-  const connection = await createConnection()
-  createProducts(connection)
+  await createConnection()
+  createProducts()
 }
 
-async function createProducts(connection: Connection) {
+async function createProducts() {
+  const connection = getConnection()
   const repository = connection.getRepository(Product)
 
   products.forEach(async (product: JsonData) => {
@@ -28,5 +27,4 @@ async function createProducts(connection: Connection) {
     }
   })
 }
-
 connectToDatabase()

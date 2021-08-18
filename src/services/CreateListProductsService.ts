@@ -1,9 +1,9 @@
 import { getCustomRepository } from 'typeorm'
-import { ListsProductsRepositories } from '../repositories/ListProductRepositories'
+import { ListsProductsRepository } from '../repositories/ListsProductsRepository'
 
 class CreateListProductsService {
   async execute(listId: string, productId: string) {
-    const repository = getCustomRepository(ListsProductsRepositories)
+    const repository = getCustomRepository(ListsProductsRepository)
 
     const listProducts = repository.create({
       listId,

@@ -1,19 +1,24 @@
-import { getCustomRepository, Like } from 'typeorm'
-import { ProductsRepositories } from '../repositories/ProductRepositories'
-import { capitalize } from '../utils/capitalize'
+import { getCustomRepository } from 'typeorm'
+import { ProductsRepository } from '../repositories/ProductsRepository'
 class ListProductByNameService {
-  async execute(name: string) {
-    const repository = getCustomRepository(ProductsRepositories)
-    if (!name) {
+  async execute(productName: string) {
+    const repository = getCustomRepository(ProductsRepository)
+    if (!productName) {
       throw new Error('Missing informations')
     }
-    const product = await repository.find({
-      where: {
-        name: Like(`%${capitalize(name)}%`)
-      },
+    const products = await repository.find({
       take: 3
     })
-    return product
+
+    const productsFiltered = products.filter(product =>
+      product.name
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .includes(productName.toLowerCase())
+    )
+
+    return productsFiltered
   }
 }
 

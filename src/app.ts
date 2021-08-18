@@ -1,5 +1,4 @@
 import 'reflect-metadata'
-import './database'
 import 'express-async-errors'
 import cors from 'cors'
 import express from 'express'
@@ -20,4 +19,4 @@ app.get('/', (req, res) => {
 
 app.use(errorMiddleware)
 
-export default app
+export { app }
