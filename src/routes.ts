@@ -5,7 +5,7 @@ import { CreateListProductsController } from './controllers/CreateListProductsCo
 import { UpdateListProductsController } from './controllers/UpdateListProductsController'
 import { ListProductDetailsController } from './controllers/ListProductDetailsController'
 import { ListProductByNameController } from './controllers/ListProductByNameController'
-import { DeleteListsController } from './controllers/DeleteListsController'
+import { DeleteListController } from './controllers/DeleteListController'
 
 const routes = Router()
 
@@ -15,7 +15,7 @@ const createListProductsController = new CreateListProductsController()
 const updateListProductsController = new UpdateListProductsController()
 const listProductDetailsController = new ListProductDetailsController()
 const listProductByNameController = new ListProductByNameController()
-const deleteListsController = new DeleteListsController()
+const deleteListsController = new DeleteListController()
 
 routes.get('/list', getListsController.handle)
 routes.post('/list', createListController.handle)

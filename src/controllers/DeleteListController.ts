@@ -1,13 +1,13 @@
 import { Request, Response } from 'express'
-import { DeleteListsService } from '../services/DeleteListsService'
+import { DeleteListService } from '../services/DeleteListService'
 
-class DeleteListsController {
+class DeleteListController {
   async handle(request: Request, response: Response) {
     const { listId } = request.body
-    const service = new DeleteListsService()
+    const service = new DeleteListService()
     const deleted = await service.execute(listId)
     return response.json(deleted)
   }
 }
 
-export { DeleteListsController }
+export { DeleteListController }

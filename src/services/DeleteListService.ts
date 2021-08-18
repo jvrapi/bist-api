@@ -1,7 +1,7 @@
 import { getCustomRepository } from 'typeorm'
 import { ListsRepository } from '../repositories/ListsRepository'
 
-class DeleteListsService {
+class DeleteListService {
   async execute(listId: string) {
     const repository = getCustomRepository(ListsRepository)
     try {
@@ -14,4 +14,4 @@ class DeleteListsService {
   }
 }
 
-export { DeleteListsService }
+export { DeleteListService }
