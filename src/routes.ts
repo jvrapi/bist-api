@@ -19,7 +19,7 @@ const deleteListsController = new DeleteListController()
 
 routes.get('/list', getListsController.handle)
 routes.post('/list', createListController.handle)
-routes.delete('/list', deleteListsController.handle)
+routes.delete('/list/:listId', deleteListsController.handle)
 routes.post('/list-products', createListProductsController.handle)
 routes.put('/list-products', updateListProductsController.handle)
 routes.get('/list-products/:id', listProductDetailsController.handle)

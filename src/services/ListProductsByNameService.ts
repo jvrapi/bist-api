@@ -10,16 +10,13 @@ class ListProductByNameService {
       take: 3
     })
 
-    const productsFiltered = products
-      .map(product => {
-        return {
-          ...product,
-          name: product.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-        }
-      })
-      .filter(product =>
-        product.name.toLowerCase().includes(productName.toLowerCase())
-      )
+    const productsFiltered = products.filter(product =>
+      product.name
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .includes(productName.toLowerCase())
+    )
 
     return productsFiltered
   }
