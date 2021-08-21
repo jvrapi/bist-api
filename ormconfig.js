@@ -13,8 +13,9 @@ const ormConfig = {
   },
 }
 
-!process.env.NODE_ENV === 'development' && (ormConfig['ssl'] = {
+process.env.NODE_ENV !== 'development' && (ormConfig['ssl'] = {
   rejectUnauthorized: false
 })
+
 
 module.exports = ormConfig
