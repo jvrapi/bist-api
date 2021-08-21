@@ -1,10 +1,9 @@
 const rootDir = process.env.NODE_ENV === 'development' ? 'src' : 'dist';
-module.exports = {
+
+const ormConfig = {
   type: process.env.BD_TYPE,
   url: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  },
+
 
   entities: [rootDir + '/entities/*.{js,ts}'],
   migrations: [rootDir + '/database/migrations/*.{js,ts}'],
@@ -13,3 +12,9 @@ module.exports = {
     entitiesDir: rootDir + '/entities',
   },
 }
+
+!process.env.NODE_ENV === 'development' && (ormConfig['ssl'] = {
+  rejectUnauthorized: false
+})
+
+module.exports = ormConfig
